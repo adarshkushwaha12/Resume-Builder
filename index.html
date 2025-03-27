@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link
+    rel="stylesheet"
+    href="https://site-assets.fontawesome.com/releases/v6.5.1/css/all.css">
+    <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
+  
+ <style>
+  #main {
+  width: 100%;
+  overflow: hidden;
+}
+
+#navend a,
+#lang a {
+  text-decoration: none;
+  color: #000;
+  position: relative;
+  font-weight: 500;
+}
+.btnLogin-popup {
+  height: 30px;
+  border: none;
+  background: transparent;
+  border: 2px solid fff;
+  outline: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#navend {
+  width: 33.33%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 3vw;
+}
+#login {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+#lang {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+#firstI {
+  top: 15%;
+  width: 100%;
+  height: 85%;
+  position: absolute;
+}
+
+/* ########### login ##############333 */
+
+.wrapper {
+  top: 20%;
+  left: 35%;
+  /* transform: translate(-50%,-17%); */
+  position: relative;
+  width: 400px;
+  height: 440px;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  box-shadow: 00 10px rgba(0, 0, 0, 0.115);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  transition: transform 0.5s ease, height 0.2s ease;
+  transform: scale(0);
+  z-index: 999999999;
+}
+.wrapper.active-popup {
+  transform: scale(1);
+}
+.wrapper.active {
+  height: 520px;
+}
+
+.wrapper .form-box {
+  width: 100%;
+  padding: 40px;
+}
+.wrapper .form-box.login {
+  /* display: none; */
+  transition: transform 0.18s ease;
+  transform: translateX(0);
+}
+.wrapper.active .form-box.login {
+  transition: none;
+  transform: translateX(-400px);
+}
+.wrapper .form-box.register {
+  position: absolute;
+  transform: translateX(400px);
+  transition: none;
+}
+.wrapper.active .form-box.register {
+  /* display: none; */
+  transition: transform 0.18s ease;
+  transform: translateX(0);
+}
+.wrapper .icon-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 45px;
+  height: 45px;
+  background-color: #162938;
+  font-size: 4vh;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom-left-radius: 20px;
+  cursor: pointer;
+  z-index: 9999999;
+}
+.form-box h2 {
+  /* font-size : 2em;  */
+  color: #162938;
+  text-align: center;
+}
+.input-box {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  border-bottom: 2px solid #162938;
+  margin: 30px 0;
+}
+.input-box label {
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  font-size: 2vh;
+  color: #162938;
+  font-weight: 500;
+  pointer-events: none;
+  transition: 0.5s;
+}
+.input-box input:focus ~ label,
+.input-box input:valid ~ label {
+  top: -5px;
+}
+
+.input-box input {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  /* font-size: ; */
+  color: #162938;
+  font-weight: 600;
+  padding: 0 35px 0 5px;
+}
+.input-box .icon {
+  position: absolute;
+  right: 8px;
+  /* font-size: ; */
+  color: #162938;
+  line-height: 57px;
+}
+.remember-forgot {
+  font-size: 2vh;
+  justify-content: space-between;
+  display: flex;
+  color: #162938;
+  font-weight: 500;
+  margin: -15px 0 15px;
+}
+.remember-forgot label input {
+  accent-color: #162938;
+  margin-right: 3px;
+}
+.remember-forgot a {
+  color: #162938;
+  text-decoration: none;
+}
+.remember-forgot a:hover {
+  text-decoration: underline;
+}
+.btn {
+  width: 100%;
+  height: 45px;
+  background: #162938;
+  border: none;
+  outline: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 2vh;
+  color: #fff;
+  font-weight: 500;
+}
+.login-register {
+  font-size: 2vh;
+  color: #162938;
+  text-align: center;
+  font-weight: 500;
+  margin: 25px 0 10px;
+}
+.login-register p a {
+  color: #162938;
+  text-decoration: none;
+  font-weight: 600;
+}
+.login-register p a:hover {
+  text-decoration: underline;
+}
+    /*h2 {
+  font-size: 22px;
+  line-height: 28px;
+
+  max-width: 600px;
+  text-align: center;
+}*/
+h2 {
+  line-height: 30px;
+  font-size: 22px;
+  font-weight: lighter;
+
+  height: 80px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  /* font-size: inherit; */
+  /* font-weight: inherit; */
+  margin: 0;
+  padding: 0;
+}
+h1 {
+  font-size: 46px;
+  line-height: 48px;
+
+  font-weight: bolder;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  /* font-size: inherit; */
+  /* font-weight: inherit; */
+  margin: 0;
+  padding: 0;
+}
+
+section {
+  max-width: 100%;
+  margin: 2rem auto;
+  padding: 1rem;
+  text-align: center;
+  background-color: #eff2f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.button {
+  background-color: blue;
+  border-radius: 4px;
+  border-width: 0;
+  color: var(--white);
+  cursor: pointer;
+  display: inline-block;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 22px;
+  outline: none;
+  padding: 14px 24px;
+  text-align: center;
+  margin-top: 5px;
+}
+.home_hero-animated-label .home_hero-counter-number {
+  display: inline-block;
+  will-change: transform;
+}
+.scroll-container {
+  width: 700px; /* Set the width of your container */
+  overflow-y: auto; /* Enable horizontal scrollbar */
+  white-space: nowrap; /* Prevent content from wrapping */
+  margin-left: 30%;
+
+  margin-top: 20px;
+  height: 100%;
+}
+
+.scroll-content {
+  width: 700px; /* Set width greater than the container to enable scrolling */
+
+  text-align: center;
+  display: inline-block;
+  height: 300px;
+}
+
+.scroll-item {
+  display: inline-block;
+  width: 300px; /* Set width of each item */
+  height: 200px;
+  
+  font-size: large;
+}
+#h {
+  text-align: center;
+  margin-top: 10px;
+  font-weight: bolder;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+#H {
+  font-size: medium;
+  padding-top: 0px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+#p {
+  margin-top: 0px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+.website-features__title {
+  margin-bottom: 32px;
+  max-width: 544px;
+}
+
+.website-features__title {
+  margin: 0 auto 70px;
+  max-width: 736px;
+  text-align: center;
+  margin-top: 80px;
+}
+
+.section__title {
+  font-size: 38px;
+  font-weight: 700;
+  line-height: 40px;
+  margin-top: 60px;
+}
+.website-features__list {
+  grid-row-gap: 48px;
+}
+
+.website-features__list {
+  grid-gap: 64px 32px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  justify-items: center;
+  margin-top: 100px;
+  width: 80%;
+  text-align: center;
+  padding-left: 10%;
+}
+
+.website-features__label {
+  color: indigo;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 28px;
+  margin-bottom: 4px;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; /* Rows 
+  
+  margin-bottom: 20px; /* Rows ke beech mein spacing ke liye */
+  height: 500px;
+  background-color: #eff2f9;
+  width: 100%;
+}
+.col {
+  flex: 1; /* Columns ko equal width dena */
+ background-color:  #eff2f9;
+  padding: 50px;
+  width: 100%;
+  box-sizing: border-box; /* Padding ke saath width include karne ke liye */
+}
+.row1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; /* Rows 
+  
+  margin-btom: 20px; /* Rows ke beech mein spacing ke liye */
+  height: 250px;
+  background-color: #eff2f9;
+  width: 100%;
+}
+.col1 {
+  flex: 1; /* Columns ko equal width dena */
+ background-color:  #eff2f9;
+  padding: 50px;
+  width: 100%;
+  box-sizing: border-box; 
+  font-size: larger;/* Padding ke saath width include karne ke liye */
+}
+.row2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; /* Rows 
+  
+  margin-btom: 20px; /* Rows ke beech mein spacing ke liye */
+  height: 800px;
+  background-color:#eff2f9;
+  width: 100%;
+ 
+  
+}
+.col2 {
+  flex: 1; /* Columns ko equal width dena */
+ background-color:  #eff2f9;
+  padding: 50px;
+  width: 100%;
+  box-sizing: border-box; 
+  font-size: larger;/* Padding ke saath width include karne ke liye */
+}
+.builder-cta__visual {
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  position: relative;
+  width: 57%;
+}
+
+ 
+ 
+
+
+.home-resume-maker__header{
+  padding-top: 70px;
+  padding-left: 70px;
+}
+#s{
+  font-size: larger;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  margin-top: 1px;
+}
+#A{
+  margin-top: 5%;
+}
+
+.button{
+background-color: rgb(0, 145, 255);
+text-decoration: none;
+}
+.website-stats__title {
+  font-size: 54px;
+  font-weight: 700;
+  line-height: 52px;
+}
+.join{
+  text-align: center;
+   line-height: 100px;
+   
+   border: 1px solid #eff2f9;
+  
+  
+}
+#j{
+  font-weight: bolder;
+  margin-top: 100px;
+}
+.row3 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; /* Rows 
+  
+  margin-btom: 20px; /* Rows ke beech mein spacing ke liye */
+  height: 300px;
+  background-color :black;
+  width: 100%;
+ 
+  
+}
+.col3 {
+  flex: 1; /* Columns ko equal width dena */
+ background-color: black;
+  padding: 50px;
+  width: 100%;
+  box-sizing: border-box; 
+  font-size: larger;/* Padding ke saath width include karne ke liye */
+}
+footer{
+  text-align: center;
+  background-color: black;
+  color: white;
+ padding-top: 40px;
+}
+a{
+  color: white;
+ line-height: 30px;
+}
+
+header{
+  height: 40px;
+
+}
+
+.website-features_title_section_title{
+    text-align: center;
+}
+
+ </style>
+
+   
+  </head>
+  <body>
+    <header>
+  
+      <div id="main">
+    
+            
+    
+        <div id="first">    
+    
+    
+    
+    
+            <div id="nav">
+                <div id="navstart">
+                    <div id="image">
+                        <img src="./images/logo farmrent-low-resolution-logo-color-on-transparent-background (1).png"
+                            alt="">
+                    </div>
+                </div>
+               
+                <div id="navend">
+                    <a href="#">Home</a>
+                    <a  href="#">About</a>
+                    <a href="#fourth">ContactUs</a>
+                       <div id="login">
+                        <i class="ri-user-line"></i>
+                        <button href="" class="btnLogin-popup">Login</button>
+                        <!-- <button>LOgin</button> -->
+                    </div>
+                    <div id="lang">
+                        <i class="ri-global-line"></i>
+                        <a href="#">Language</a>
+                    </div>
+                </div>
+    
+    
+            </div>
+    
+            <div id="firstI">
+    
+               <!-- ####### login #######33 -->
+    
+            <div class="wrapper">
+    
+                <span class="icon-close">
+                    <i class="ri-close-fill"></i>
+                </span>
+    
+                <div class="form-box login">
+                    <h2>Login</h2>
+                    <form action="#">
+                        <div class="input-box">
+                            <span class="icon">
+                                <i class="ri-mail-fill"></i>
+                            </span>
+                            <input type="email" required>
+                            <label for="">Email</label>
+                        </div>
+                        <div class="input-box">
+                            <span class="icon">
+                                <i class="ri-lock-fill"></i>
+                            </span>
+                            <input type="password" required>
+                            <label>Password</label>
+                        </div>
+                        <div class="remember-forgot">
+                            <label><input type="checkbox">Remember me</label>
+                            <a href="#">Forgot Password?</a>
+                        </div>
+                        <button type="submit" class="btn">Login</button>
+                        <div class="login-register">
+                            <p>Don't have an account?
+                                <a href="#" class="register-link">Register</a>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+    
+    
+                <!-- ###################3 registration ###############3 -->
+    
+    
+                <div class="form-box register">
+                    <h2>Registration</h2>
+                    <form action="#">
+                        <div class="input-box">
+                            <span class="icon">
+                                <i class="ri-user-fill"></i>
+                            </span>
+                            <input type="text" required>
+                            <label for="">Username</label>
+                        </div>
+                        <div class="input-box">
+                            <span class="icon">
+                                <i class="ri-mail-fill"></i>
+                            </span>
+                            <input type="email" required>
+                            <label for="">Email</label>
+                        </div>
+                        <div class="input-box">
+                            <span class="icon">
+                                <i class="ri-lock-fill"></i>
+                            </span>
+                            <input type="password" required>
+                            <label for="">Password</label>
+                        </div>
+                        <div class="remember-forgot">
+                            <label><input type="checkbox">I agree to the terms & conditions</label>
+                        </div>
+                        <button type="submit" class="btn">Register</button>
+                        <div class="login-register">
+                            <p>Already have an account?
+                                <a href="#" class="login-link">Login</a>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+    
+            </div>
+    
+        </div>
+        </header>
+
+  
+    
+    <section>
+        <div class="container">
+            <h5>ONLINE RESUME BUILDER</h5>
+            
+            <pre>
+              <h1>Only 2% of resumes make it past the 
+first round. Be in the top 2%</h1>
+              <h2>
+       Use professional field-tested resume templates that follow the exact
+      ‘resume rules’ employers look for. Easy to use and done within
+      minutes - try now for free!
+              
+              </h2>
+                  
+          
+          </pre>
+          <!-- <div class="home__hero-button">
+              <a class="home__button button"
+             href="http://127.0.0.1:5501/onee.html" onclick="" >Create My Resume          
+            </a>  
+        
+          </div> -->
+          <div class="home__hero-counter">
+            <div class="home_hero-animated-label home_hero-counter-wrapper">
+              <div class="home__hero-counter-number">33,297</div>
+            </div> resumes created today</div>
+          <a class="home_hero-resume home_hero-resume--loaded" data-internal-event="{&quot;name&quot;:&quot;click_hero_template&quot;,&quot;label&quot;:&quot;home&quot;}" href="http://127.0.0.1:5501/onee.html">
+            <img srcset="https://muddaser.com/wp-content/uploads/2023/03/CV-4.jpg" sizes="(max-width: 767px) 385px, 770px" width="770" height="500" class="home_hero-resume-image" alt="Create My Resume" onload="this.parentNode.classList.add('home_hero-resume--loaded')" src="https://s3.resume.io/cdn-cgi/image/width=770,height=350,fit=crop,gravity=top,quality=75,format=auto/uploads/local_template_image/image/488/persistent-resource/dublin-resume-templates.jpg"></a>
+
+          <div class="logos">
+            <div class="logos__container grid-container">
+              <div class="logos__list">
+                <div class="logos_item logos_item--forbes is-image-loaded" data-lazy-bg="/assets/landing/home/logos-sprite-ade57f5671d37879542e01bdeee39e4502fecbad724c7aa4aba7a9e5959e9ede.png" style="background-image: url(&quot;/assets/landing/home/logos-sprite-ade57f5671d37879542e01bdeee39e4502fecbad724c7aa4aba7a9e5959e9ede.png&quot;);">
+
+                </div>
+                <div class="logos_item logos_item--muse is-image-loaded" data-lazy-bg="/assets/landing/home/logos-sprite-ade57f5671d37879542e01bdeee39e4502fecbad724c7aa4aba7a9e5959e9ede.png" 
+                style="background-image: url(&quot;/assets/landing/home/logos-sprite-ade57f5671d37879542e01bdeee39e4502fecbad724c7aa4aba7a9e5959e9ede.png&quot;);">
+
+                </div>
+                <div class="logos_item logos_item--entrepreneur is-image-loaded" data-lazy-bg="/assets/landing/home/logos-sprite-ade57f5671d37879542e01bdeee39e4502fecbad724c7aa4aba7a9e5959e9ede.png" style="background-image: url(&quot;/assets/landing/home/logos-sprite-ade57f5671d37879542e01bdeee39e4502fecbad724c7aa4aba7a9e5959e9ede.png&quot;);">
+
+                </div>
+                <div class="logos_item logos_item--lifehack is-image-loaded" data-lazy-bg="/assets/landing/home/logos-sprite-ade57f5671d37879542e01bdeee39e4502fecbad724c7aa4aba7a9e5959e9ede.png" style="background-image: url(&quot;/assets/landing/home/logos-sprite-ade57f5671d37879542e01bdeee39e4502fecbad724c7aa4aba7a9e5959e9ede.png&quot;);">
+
+                </div>
+                <div class="logos_item logos_item--inc is-image-loaded" data-lazy-bg="/assets/landing/home/logos-sprite-ade57f5671d37879542e01bdeee39e4502fecbad724c7aa4aba7a9e5959e9ede.png" style="background-image: url(&quot;/assets/landing/home/logos-sprite-ade57f5671d37879542e01bdeee39e4502fecbad724c7aa4aba7a9e5959e9ede.png&quot;);">
+
+                </div>
+              </div>
+            </div>
+          </div>
+    </section>
+    
+    
+
+    
+    </div>
+<pre><h1 id="h">Reviewed by the community. Trusted 
+by professionals</h1></pre>
+
+
+    <div class="scroll-container">
+      <h1></h1>
+        <div class="scroll-content">
+           
+          <div class="scroll-item"> 
+<pre id="p"><h1 id="H">
+                   I'm thrilled with the res...</h1>
+           I'm thrilled with the results.
+           The user-friendly interface,
+           extensive template options,
+              and helpful suggestions mad....</pre> </div> 
+          <div class="scroll-item"><pre id="p"><h1 id="H">
+                   Easy to use</h1>
+    Easy to use. The only thing 
+          that i wanted to be improved is
+    adding an ability to change 
+    font-sizes, letter-spacings....</pre></div> 
+          <div class="scroll-item"><pre id="p"><h1 id="H">
+                   I have no Idea to make...</h1>
+          I have no Idea to make...
+            I have no Idea to make up
+             my resume in official way 
+          in order to get a job on 
+             my own. This helped me in 
+             creating my...</pre></div>
+          <div class="scroll-item"><pre id="p"><h1 id="H">
+            The tools available are ...</h1>
+        The tools available are
+            great and the templates 
+          look amazing. It took a
+            task that scared me and
+  turned almost....</pre></div>
+          <div class="scroll-item"><pre id="p"><h1 id="H">
+            Creating my resume wa...</h1>
+           Creating my resume was 
+            really smooth and not as
+             time consuming as it used
+             to be!!</pre></div>
+        
+
+          <!-- Add more items here if needed -->
+        </div>
+      </div>  
+   <div class="website-features section">
+    <div class="grid-container">
+      <h2 class="website-features_title_section_title">Features designed to help you win your dream job</h2>
+      <div class="website-features__list">
+        <div class="website-features__item">
+          <div class="website-features_image website-features_image--builder is-image-loaded" data-lazy-bg="/assets/landing/home/features/features_sprite_v2-49d557b4301b1bbe227243395d8fd562955d77dc30d485a92f14abfdaf4e796d.svg" style="background-image: url(&quot;/assets/landing/home/features/features_sprite_v2-49d557b4301b1bbe227243395d8fd562955d77dc30d485a92f14abfdaf4e796d.svg&quot;);">
+
+          </div>
+          <div class="website-features__item-content">
+            <div class="website-features__label">Easy online resume builder</div>
+            <div class="website-features__text">Create an awesome resume in minutes, without leaving your web browser.</div>
+          </div>
+        </div>
+        <div class="website-features__item">
+            <div class="website-features_image website-features_image--writing is-image-loaded" data-lazy-bg="/assets/landing/home/features/features_sprite_v2-49d557b4301b1bbe227243395d8fd562955d77dc30d485a92f14abfdaf4e796d.svg" style="background-image: url(&quot;/assets/landing/home/features/features_sprite_v2-49d557b4301b1bbe227243395d8fd562955d77dc30d485a92f14abfdaf4e796d.svg&quot;);">
+
+            </div>
+            <div class="website-features__item-content">
+              <div class="website-features__label">Automatic spell-checker</div>
+              <div class="website-features__text">Our built-in spell-checker takes care of the grammar for you. Create a resume with zero typos or errors.</div>
+            </div>
+          </div>
+          <div class="website-features__item">
+            <div class="website-features_image website-features_image--ok-hand is-image-loaded" data-lazy-bg="/assets/landing/home/features/features_sprite_v2-49d557b4301b1bbe227243395d8fd562955d77dc30d485a92f14abfdaf4e796d.svg" style="background-image: url(&quot;/assets/landing/home/features/features_sprite_v2-49d557b4301b1bbe227243395d8fd562955d77dc30d485a92f14abfdaf4e796d.svg&quot;);">
+
+            </div>
+            <div class="website-features__item-content">
+              <div class="website-features__label">Your data is safe</div>
+              <div class="website-features__text">Your data is kept private and protected by strong 256-bit encryption.</div>
+            </div>
+          </div>
+          <div class="website-features__item">
+            <div class="website-features_image website-features_image--grammar is-image-loaded" data-lazy-bg="/assets/landing/home/features/features_sprite_v2-49d557b4301b1bbe227243395d8fd562955d77dc30d485a92f14abfdaf4e796d.svg" style="background-image: url(&quot;/assets/landing/home/features/features_sprite_v2-49d557b4301b1bbe227243395d8fd562955d77dc30d485a92f14abfdaf4e796d.svg&quot;);">
+
+            </div>
+            <div class="website-features__item-content">
+              <div class="website-features__label">Automatic summary generator</div>
+              <div class="website-features__text">Create a powerful resume profile or cover letter in one click. Writer’s block is no longer an obstacle. Try for free!</div>
+            </div>
+          </div>
+          <div class="website-features__item">
+            <div class="website-features_image website-features_image--templates is-image-loaded" data-lazy-bg="/assets/landing/home/features/features_sprite_v2-49d557b4301b1bbe227243395d8fd562955d77dc30d485a92f14abfdaf4e796d.svg" style="background-image: url(&quot;/assets/landing/home/features/features_sprite_v2-49d557b4301b1bbe227243395d8fd562955d77dc30d485a92f14abfdaf4e796d.svg&quot;);">
+
+            </div>
+            <div class="website-features__item-content">
+              <div class="website-features__label">Approved templates</div>
+              <div class="website-features__text">Professionally-designed resume templates and examples. Just edit and download in 5 minutes.</div>
+            </div>
+          </div>
+          <div class="website-features__item">
+            <div class="website-features_image website-features_image--job-tracking is-image-loaded" data-lazy-bg="/assets/landing/home/features/features_sprite_v2-49d557b4301b1bbe227243395d8fd562955d77dc30d485a92f14abfdaf4e796d.svg" style="background-image: url(&quot;/assets/landing/home/features/features_sprite_v2-49d557b4301b1bbe227243395d8fd562955d77dc30d485a92f14abfdaf4e796d.svg&quot;);"></div>
+            <div class="website-features__item-content">
+              <div class="website-features__label">AI pre-written phrases</div>
+              <div class="website-features__text">Use the power of AI and data analysis, choose pre-generated effective phrases and keywords.</div>
+            </div>
+          </div>
+          <div class="website-features__item">
+            <div class="website-features_image website-features_image--security is-image-loaded" data-lazy-bg="/assets/landing/home/features/features_sprite_v2-49d557b4301b1bbe227243395d8fd562955d77dc30d485a92f14abfdaf4e796d.svg" style="background-image: url(&quot;/assets/landing/home/features/features_sprite_v2-49d557b4301b1bbe227243395d8fd562955d77dc30d485a92f14abfdaf4e796d.svg&quot;);">
+
+            </div>
+            <div class="website-features_item-content"><div class="website-features__label">Optimized resumes</div><div class="website-features_text">Formats and designs are optimized for resume-filtering algorithms. Ensure humans see your application!</div>
+          </div>
+        </div>
+        <div class="website-features__item">
+          <div class="website-features_image website-features_image--word is-image-loaded" data-lazy-bg="/assets/landing/home/features/features_sprite_v2-49d557b4301b1bbe227243395d8fd562955d77dc30d485a92f14abfdaf4e796d.svg" style="background-image: url(&quot;/assets/landing/home/features/features_sprite_v2-49d557b4301b1bbe227243395d8fd562955d77dc30d485a92f14abfdaf4e796d.svg&quot;);">
+
+          </div>
+          <div class="website-features__item-content">
+            <div class="website-features__label">Multi-format resume options</div>
+            <div class="website-features__text">Save your perfect resume in any common format, including Microsoft Word and PDF in a single click.</div>
+          </div>
+        </div>
+        <div class="website-features__item">
+          <div class="website-features_image website-features_image--cover-letter is-image-loaded" data-lazy-bg="/assets/landing/home/features/features_sprite_v2-49d557b4301b1bbe227243395d8fd562955d77dc30d485a92f14abfdaf4e796d.svg" style="background-image: url(&quot;/assets/landing/home/features/features_sprite_v2-49d557b4301b1bbe227243395d8fd562955d77dc30d485a92f14abfdaf4e796d.svg&quot;);">
+
+          </div>
+          <div class="website-features__item-content">
+            <div class="website-features__label">Cover letters</div>
+            <div class="website-features__text">Our cover letter builder works with the same ease and use of elegant templates as the resume creator.</div>
+          </div>
+        </div>
+      </div>
+    
+    </div>
+  </div>
+  <div class="home-resume-maker__header">
+  <div class="row">
+    <div class="col"><div class="home-resume-maker__header-visual is-image-loaded" >
+      <img src="https://resumeglow.com/img/demo3.png" alt="">
+
+   </div>
+   </div>
+   
+   <div class="row">
+    <div class="col">
+      <h1 id="A" >Use the best resume maker as your guide
+        </h1>
+        <pre id="s">
+          <p>Getting that dream job can seem like an impossible task. We’re 
+here to change that. Give yourself a real advantage with the best
+online resume maker: created by experts, improved by data, trusted
+              by millions of professionals.</p>
+        </pre>
+        <div class="home-resume-maker__header-actions">
+      <a class="button" data-internal-event="{&quot;name&quot;:&quot;click_create_resume&quot;,&quot;label&quot;:&quot;home&quot;}"
+       href="http://127.0.0.1:5501/onee.html">Create My Resume</a>
+      <button class="home-resume-maker__watch button button--outline" data-iframe-src=" youtube.com/watch?v=ZwP7kv0zHiY">
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="14" fill="none" class="home-resume-maker__watch-icon"><path d="M1.5.9a1 1 0 00-1.5.8v10.6a1 1 0 001.5.8l9-5.2a1 1 0 000-1.8L1.5 1z"></path>
+        </svg>
+  Watch Video</button>
+    </div>
+    
+
+   </div>
+
+   </div>
+  
+  </div>
+</div>
+<div class="row1">
+<div class="col1"><h3>Make a resume that wins interviews
+ </h3> Use our resume maker with its advanced creation tools to tell a professional story that engages recruiters, hiring managers and even CEOS
+</div>
+<div class="col1"><h3>Resume writing made easy
+  </h3>
+  Resume writing has never been this effortless. Pre-generated text, visual designs and more - all already integrated into the resume maker. Just fill in your details.</div>
+<div class="col1"><h3> A recruiter-tested CV maker tool
+ </h3>
+ Our resume builder and its pre-generated content are tested by recruiters and IT experts.
+  We help your resume become truly competitive in the hiring process.</div>
+</div>
+
+<div class="row2">
+  <div class="col2"><div class="home-resume-maker__header-visual is-image-loaded" >
+    <img src="https://media.licdn.com/dms/image/D4E12AQE1_9RETHHp8A/article-cover_image-shrink_720_1280/0/1684149680460?e=1716422400&v=beta&t=A0ajbr3RPM2X7rjZBa8kN91UmRztJPwReXf2IDZHKzY" alt="">
+
+ </div>
+ </div>
+ 
+ <div class="row2">
+  <div class="col2">
+    <h1 id="A" >Try our professional Resume builder now!
+      </h1>
+      
+      Save time with our easy 3-step resume builder. No more writer’s block or formatting difficulties in Word. Rapidly make a perfect resume employers love.
+      <div class="home-resume-maker__header-actions">
+    <a class="button" data-internal-event="{&quot;name&quot;:&quot;click_create_resume&quot;,&quot;label&quot;:&quot;home&quot;}" 
+    href="http://127.0.0.1:5501/onee.html">Create My Resume</a>
+    <button class="home-resume-maker__watch button button--outline" data-iframe-src=" youtube.com/watch?v=ZwP7kv0zHiY">
+      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="14" fill="none" class="home-resume-maker__watch-icon"><path d="M1.5.9a1 1 0 00-1.5.8v10.6a1 1 0 001.5.8l9-5.2a1 1 0 000-1.8L1.5 1z"></path>
+      </svg>
+Resume Example</button>
+    </div>
+  
+
+ </div>
+ 
+
+ </div>
+ </div>
+ <div class="join">
+  <h1 id="j">Join over 35,428,000 users worldwide
+   </h1> Start for free — try our resume builder now
+   <div class="home-resume-maker__header-actions">
+    <a class="button" data-internal-event="{&quot;name&quot;:&quot;click_create_resume&quot;,&quot;label&quot;:&quot;home&quot;}" href="http://127.0.0.1:5501/onee.html">Create My Resume</a>
+ </div>
+    </div>
+ <footer>
+  <h1>Create a Resume</h1>
+  <hr>
+ <div class="row3">
+  <div class="col3">
+    <h5>Connect with us </h5>
+    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+    <a href="#"><i class="fa-brands fa-github"></i></a>
+    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+  </div>
+  <div class="col3">
+    <h5>JOB SEEKERS</h5>
+  <a href="#">
+    Create a Resume</a> <br>
+    <a href="#">
+       Resume Example</a><br>
+      <a href="#">
+         Resume Templates</a><br>
+        <a href="#">
+          Job Search</a>
+          
+  </div>
+  <div class="col3">
+    <h5>CAREER RESOURCES</h5>
+  <a href="#">
+     Resume Help</a><br>
+     <a href="#">
+      Job Interview</a><br>
+      <a href="#">
+        Career</a><br>
+        <a href="#">
+          Blog</a>
+
+  </div>
+  <div class="col3">
+    <h5>SUPPORT</h5>
+  <a href="#">
+     FAQ</a><br>
+     <a href="#">
+      Contact Us</a><br>
+      <a href="#">
+        Terms od Service</a><br>
+        <a href="#">
+          Privacy</a>
+  </div>
+  
+  
+
+ </div>
+ </footer>
+    
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js" integrity="sha512-f8mwTB+Bs8a5c46DEm7HQLcJuHMBaH/UFlcgyetMqqkvTcYg4g5VXsYR71b3qC82lZytjNYvBj2pf0VekA9/FQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js" integrity="sha512-A64Nik4Ql7/W/PJk2RNOmVyC/Chobn5TY08CiKEX50Sdw+33WTOpPJ/63bfWPl0hxiRv1trPs5prKO8CpA7VNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+ <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.js"></script>
+<script>
+  
+    function openNewPage() {
+      window.open("http://127.0.0.1:5501/onee.html", "_blank");
+    }
+    const wrapper = document.querySelector(".wrapper");
+const loginLink = document.querySelector(".login-link");
+const registerLink = document.querySelector(".register-link");
+const btnPopup = document.querySelector(".btnLogin-popup");
+const iconClose = document.querySelector(".icon-close");
+
+registerLink.addEventListener("click", () => {
+  wrapper.classList.add("active");
+});
+
+loginLink.addEventListener("click", () => {
+  wrapper.classList.remove("active");
+});
+
+iconClose.addEventListener("click", () => {
+  wrapper.classList.remove("active-popup");
+});
+
+btnPopup.addEventListener("click", () => {
+  wrapper.classList.add("active-popup");
+});
+  </script>
+</html>

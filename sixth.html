@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Two Parts HTML Page</title>
+    <style>
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        font-family: Arial, sans-serif;
+      }
+      section{
+    margin: 2rem auto;
+  width: 900px;
+  
+
+}
+      .container {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+      .top,
+      .bottom {
+        /* padding: 20px; */
+        box-sizing: border-box;
+      }
+      .top {
+        background-color:cadetblue;
+        flex: 0 0 20%; /* Adjust the height of the top part here */
+      }
+      .bottom {
+        padding: 20px;
+        background-color: #e0e0e0;
+        flex: 1; /* Make the bottom part occupy the remaining space */
+      }
+      
+      #imgT {
+  border-radius: 50%;
+  width: 200px;
+  align-items: center;
+}
+#imageContainer {
+       /* width: 100px; */
+      /* height: 100px; */
+      /* border: 1px solid black; */
+      flex: 0 0 20%; 
+      position:static;
+      overflow: hidden; 
+      /* margin-right: 50%; */
+    }
+    #imagePreview {
+      /* width: 50%;
+      height: 50%;*/
+      object-fit: cover;
+      
+  border-radius: 60%;
+  width: 100px;
+  align-items: center;
+  margin-left: 250px;
+}
+    
+    #fileInput {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+    }
+ 
+    label{
+      text-align: center;
+    }
+    .head {
+  display: grid;
+  grid-template-columns: 3fr 1.5fr;
+ 
+}
+.head .main .name {
+  font-size: 55px;
+  font-family: "Raleway", sans-serif;
+  text-align: center;
+}
+.head .main span:nth-child(2) {
+  color: rgb(100, 100, 100);
+  font-size: 55px;
+  font-family: "Raleway", sans-serif;
+  margin: 5px;
+}
+.head .main .post {
+  font-family: "Barlow", sans-serif;
+}
+.head .contacts {
+  text-align: right;
+  padding-top: 7px;
+  text-align: center;
+}
+.head .contacts .content {
+  font-weight: 500;
+  padding: 5px;
+  text-align: center;
+}
+.head .contacts .symbol {
+  margin-right: 5px;
+  font-size: 15px;
+  width: 17px;
+  height: 17px;
+  text-align: center;
+}
+.main{
+  text-align: center;
+}
+
+     
+    </style>
+  </head>
+  <body>
+    <section>
+      <div class="container">
+       
+        <div class="top">
+          <div id="imageContainer">
+            <input type="file" id="imageInput" accept="image/*" style="display: none;">
+           
+            <img id="imagePreview" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLFark5o-0f37XX8F3BGQL0TodQotzfkasMw&usqp=CAU" alt="Image Preview" onclick="openFileInput()">
+            
+             
+          </div>
+          <div class="container">
+            <div class="head"
+            >
+              <div class="main">
+                   <span class="name" contenteditable="true">YOUR</span> <span contenteditable="true">NAME</span>
+                  <div class="post" contenteditable="true">YOUR JOB PROFILE</div> 
+                  <!-- <h2 contenteditable="true" id="myname"> YOUR NAME</h2> -->
+              </div>
+              <div class="contacts">
+              <span contenteditable="true" class="content">231-3212-2132</span><span class="symbol">
+                   <i class="fas fa-phone"></i></span><br>
+              <span contenteditable="true" class="content">samplemail@email.in</span><span class="symbol">
+                   <i class="fas fa-envelope"></i></span><br>
+              <span contenteditable="true" class="content">linkedin/username.com</span><span class="symbol"> 
+                  <i class="fab fa-linkedin"></i></span><br>
+              <span contenteditable="true" class="content">sample street-India</span><span class="symbol"> 
+                  <i class="fas fa-map-marker-alt"></i></i></span>
+              </div>
+          </div>
+          </div>
+        
+        </div>
+        
+        <div class="bottom">
+          
+            
+            
+                   <!-- objective card-->
+                   <div class="card mt-4">
+                    <div class="card-header background">
+                      <h3  contenteditable="true">Objective</h3>
+                    </div>
+                    <div class="card-body">
+                      <p  contenteditable="true" id="objectiveT">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vero possimus excepturi, 
+                          veritatis amet similique nobis optio mollitia ut, earum inventore placeat quam la!
+                      </p>
+                    </div>
+                   </div>
+                   
+                   <!--  Academic Qualification-->
+                <div class="card mt-4">
+                  <div class="card-header background">
+                    <h3  contenteditable="true">Academic Qualification</h3>
+                  </div>
+                  <div  contenteditable="true" class="card-body">
+                    <ul id="aqT">
+                      <li>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis, commodi.</li>
+                      <li>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis, commodi.</li>
+                    
+                    </ul>
+                  </div>
+                 </div>
+                 <!-- Work Experience-->
+                 <div  contenteditable="true" class="card mt-4">
+                  <div class="card-header background">
+                    <h3>Work Experience</h3>
+                  </div>
+                  <div class="card-body">
+                    <ul  contenteditable="true" id="weT">
+                      <li>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis, commodi.</li>
+                      <li>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis, commodi.</li>
+                    </ul>
+                  </div>
+                 </div>
+                 <!-- Personal Project -->
+                 <div class="card mt-4">
+                  <div class="card-header background">
+                    <h3  contenteditable="true">Personal project</h3>
+                  </div>
+                  <div class="card-body">
+                    <ul  contenteditable="true" id="ppT">
+                      <li>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis, commodi.</li>
+                      <li>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis, commodi.</li>
+                      
+                    </ul>
+                  </div>
+                 </div>
+    
+                 <!-- Skills -->
+                 <div class="card mt-4">
+                  <div class="card-header background">
+                    <h3  contenteditable="true">Skills</h3>
+                  </div>
+                  <div class="card-body">
+                    <ul  contenteditable="true" id="skT">
+                      <li>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis, commodi.</li>
+                      <li>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis, commodi.</li>
+                     
+                    </ul>
+                  </div>
+                 </div>
+    
+                 <!-- Achievements -->
+                 <div class="card mt-4">
+                  <div class="card-header background">
+                    <h3  contenteditable="true">Achievements</h3>
+                  </div>
+                  <div class="card-body">
+                    <ul  contenteditable="true" id="achT">
+                      <li>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis, commodi.</li>
+                      <li>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis, commodi.</li>
+                      
+                    </ul>
+                  </div>
+                 </div>
+                 <!-- Certificate -->
+                 <div class="card mt-4">
+                  <div class="card-header background">
+                    <h3  contenteditable="true">Certificates</h3>
+                  </div>
+                  <div class="card-body">
+                    <ul  contenteditable="true" id="cerT">
+                      <li>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis, commodi.</li>
+                      <li>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis, commodi.</li>
+                    </ul>
+                  </div>
+                 </div>
+                 <div class="container mt-3 text-ceneter">
+                  <button onclick="printCV()" class=" btn background">
+                  Print CV
+                 </button></div>
+                </div>
+                
+              </div>
+            
+                </div>
+              </div>
+            </div>
+             
+
+        </div>
+      </div>
+    </section>
+  </body>
+  
+    <script>
+function openFileInput() {
+  document.getElementById('imageInput').click();
+}
+
+document.getElementById('imageInput').addEventListener('change', function(event) {
+  const file = event.target.files[0];
+  const reader = new FileReader();
+
+  reader.onload = function(e) {
+    document.getElementById('imagePreview').src = e.target.result;
+  };
+
+  reader.readAsDataURL(file);
+});
+function printCV() {
+  window.print();
+}
+  </script>
+  
+</html>
